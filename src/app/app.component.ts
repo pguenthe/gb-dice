@@ -28,6 +28,8 @@ export class AppComponent {
 
   lastRoll: string = 'Rolls appear here';
 
+  ghostStatus: boolean = false;
+
   increaseBrains(ev:Event) {
     if (this.brains < 5 && this.totalTraits < this.traitsAllowed) {
       this.brains++;
@@ -107,44 +109,48 @@ export class AppComponent {
   }
 
   rollCool(ev:Event) {
-    this.roll(this.cool + 3, "Cool");
+    this.roll(this.cool, "Cool");
   }
   
   rollBrainsTalent(ev:Event) {
-    this.roll(this.brains + 3, "Brains Talent");
+    this.roll(this.brains + 3, this.brainsTalent + " (Brains)");
   }
   
   rollMuscleTalent(ev:Event) {
-    this.roll(this.muscle + 3, "Muscle Talent");
+    this.roll(this.muscle + 3, this.muscleTalent + " (Muscle)");
   }
 
   rollMovesTalent(ev:Event) {
-    this.roll(this.moves + 3, "Moves Talent");
+    this.roll(this.moves + 3, this.movesTalent + " (Moves}");
   }
 
   rollCoolTalent(ev:Event) {
-    this.roll(this.cool + 3, "Cool Talent");
+    this.roll(this.cool + 3, this.coolTalent + " (Cool)");
   }
+
   roll(trait:number, label: string){
-    this.lastRoll = label + " Roll: ";
+    let rollStr= label + " Roll:&nbsp;";
     var total: number = 0;
 
     for(var i:number = 0; i < trait - 1; i++) {
       var roll:number = this.d6();
-      this.lastRoll += roll + ' ';
+      rollStr += `<img width="44" height="44" src="assets/img/green${roll}.svg" class="die" />&nbsp;`;
       total += roll;
     }
 
     //Ghost die
     var ghost:number = this.d6();
     if (ghost === 6) {
-      this.lastRoll += 'GHOST!!';
+      this.ghostStatus = true;
     } else {
-      this.lastRoll += ghost;
+      this.ghostStatus = false;
       total += ghost;
     }
 
-    this.lastRoll += " TOTAL: " + total;
+    rollStr += `<img width="44" height="44" src="assets/img/white${ghost}.svg" class="die" />&nbsp;`;
+
+    rollStr += " Total: " + total;
+    this.lastRoll = rollStr;
   }
 
   d6() {

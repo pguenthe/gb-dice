@@ -49,28 +49,35 @@
     height: 64px;
     width: 100%;
     margin: 0px;
-    background-image: url("/assets/img/stripe.png");
+    background-image: url("../assets/img/stripe.png");
     background-repeat: repeat;
   }
 
   .content {
     display: flex;
-    margin: 82px auto 32px;
+    margin: 82px auto 0px; 
     padding: 0 16px;
-    max-width: 960px;
+    max-width: 1200px;
     flex-direction: column;
     align-items: center;
     color: #ccc;
   }
 
-  a,
-  a:visited{
-    color: #138d0d;
-    text-decoration: none;
+  .row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
   }
 
-  a:hover {
-    color: #17e40d;
+  .col {
+    /* padding: 8px;
+    margin: 8px; */
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
   }
 
   .btn-roll {
@@ -105,6 +112,16 @@
     margin: 2px;
     border: 1px solid black;
     border-radius: 2px;
+}
+
+.btn-extra-wide {
+  font-size: 14px;
+  height: 32px;
+  width: 128px;
+  padding: 2px;
+  margin: 2px;
+  border: 1px solid black;
+  border-radius: 2px;
 }
 
 select {
@@ -174,6 +191,15 @@ select {
     width: 5em;
     text-align: right;
     display: inline-block;
+}
+
+.wide-trait {
+  margin: 0px 4px;
+  height: 32px;
+  font-size: 16pt;
+  width: 10em;
+  text-align: right;
+  display: inline-block;
 }
 
 img.die {

@@ -128,7 +128,7 @@ export class AppComponent {
     this.roll(this.cool + 3, this.coolTalent + " (Cool)");
   }
 
-  roll(trait:number, label: string){
+  roll = function (trait:number, label: string){
     let rollStr= label + " Roll:&nbsp;";
     var total: number = 0;
 
@@ -153,7 +153,16 @@ export class AppComponent {
     this.lastRoll = rollStr;
   }
 
-  d6() {
+  rollStraight = function() {
+    let rollStr= "Straight d6 Roll:&nbsp;";
+    var roll:number = this.d6();
+
+    rollStr += `<img width="44" height="44" src="assets/img/green${roll}.svg" class="die" />&nbsp;`;
+    rollStr += " Total: " + roll;
+    this.lastRoll = rollStr;
+  }
+
+  d6 = function() {
     return Math.floor(Math.random() * 6 + 1);
   }
 

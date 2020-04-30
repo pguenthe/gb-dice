@@ -9,102 +9,116 @@
 
 <div class="content" role="main">
 
-  <div class="trait-label">
-    <span class="trait">Name:</span>
-    <input [(ngModel)]="name" type="text" class="input-control wide" />
-  </div>
+<div class="row">
+  <div class="col left">
+    <div class="trait-label">
+      <span class="trait">Name:</span>
+      <input [(ngModel)]="name" type="text" class="input-control wide" />
+    </div>
 
-  <div class="trait-label">
-    <span class="trait">
-    Brains:
-    </span>
+    <div class="trait-label">
+      <span class="trait">
+      Brains:
+      </span>
+      
+      <button class="btn-small" (click)="decreaseBrains($event)">-</button>
+      <span class="trait-holder">{{ brains }}</span>
+      <button class="btn-small" (click)="increaseBrains($event)">+</button>
+
+      <button class="btn-med btn-roll" (click)="rollBrains($event)">Roll</button>
+      &nbsp;
+      <select [(ngModel)]="brainsTalent">
+        <option value="">Choose one...</option>
+        <option *ngFor="let x of brainsTalents">{{x}}</option>
+      </select>
+
+      <button class="btn-wide btn-roll" (click)="rollBrainsTalent($event)">Roll Talent</button>
+    </div>
+    <div class="trait-label">
+      <span class="trait">
+        Muscle:
+      </span>
     
-    <button class="btn-small" (click)="decreaseBrains($event)">-</button>
-    <span class="trait-holder">{{ brains }}</span>
-    <button class="btn-small" (click)="increaseBrains($event)">+</button>
+      <button class="btn-small" (click)="decreaseMuscle($event)">-</button>
+      <span class="trait-holder">{{ muscle }}</span>
+      <button class="btn-small" (click)="increaseMuscle($event)">+</button>
 
-    <button class="btn-med btn-roll" (click)="rollBrains($event)">Roll</button>
-    &nbsp;
-    <select [(ngModel)]="brainsTalent">
-      <option value="">Choose one...</option>
-      <option *ngFor="let x of brainsTalents">{{x}}</option>
-    </select>
+      <button class="btn-med btn-roll" (click)="rollMuscle($event)">Roll</button>
+      &nbsp;
+      <select [(ngModel)]="muscleTalent">
+        <option value="">Choose one...</option>
+        <option *ngFor="let x of muscleTalents">{{x}}</option>
+      </select>
+      <button class="btn-wide btn-roll" (click)="rollMuscleTalent($event)">Roll Talent</button>
+    </div>
 
-    <button class="btn-wide btn-roll" (click)="rollBrainsTalent($event)">Roll Talent</button>
-  </div>
-  <div class="trait-label">
-    <span class="trait">
-      Muscle:
-    </span>
-  
-    <button class="btn-small" (click)="decreaseMuscle($event)">-</button>
-    <span class="trait-holder">{{ muscle }}</span>
-    <button class="btn-small" (click)="increaseMuscle($event)">+</button>
-
-    <button class="btn-med btn-roll" (click)="rollMuscle($event)">Roll</button>
-    &nbsp;
-    <select [(ngModel)]="muscleTalent">
-      <option value="">Choose one...</option>
-      <option *ngFor="let x of muscleTalents">{{x}}</option>
-    </select>
-    <button class="btn-wide btn-roll" (click)="rollMuscleTalent($event)">Roll Talent</button>
-  </div>
-
-  <div class="trait-label">
-    <span class="trait">
-      Moves:
-    </span>
-  
-  <button class="btn-small" (click)="decreaseMoves($event)">-</button>
-  <span class="trait-holder">{{ moves }}</span>
-  <button class="btn-small" (click)="increaseMoves($event)">+</button>
-
-  <button class="btn-med btn-roll" (click)="rollMoves($event)">Roll</button>
-  &nbsp;
-  <select [(ngModel)]="movesTalent">
-    <option value="">Choose one...</option>
-    <option *ngFor="let x of movesTalents">{{x}}</option>
-  </select>
-  <button class="btn-wide btn-roll" (click)="rollMovesTalent($event)">Roll Talent</button>
-  </div>
-
-
-  <div class="trait-label">
-    <span class="trait">
-      Cool:
-    </span>
+    <div class="trait-label">
+      <span class="trait">
+        Moves:
+      </span>
     
-    <button class="btn-small" (click)="decreaseCool($event)">-</button>
-    <span class="trait-holder">{{ cool }}</span>
-    <button class="btn-small" (click)="increaseCool($event)">+</button>
+    <button class="btn-small" (click)="decreaseMoves($event)">-</button>
+    <span class="trait-holder">{{ moves }}</span>
+    <button class="btn-small" (click)="increaseMoves($event)">+</button>
 
-    <button class="btn-med btn-roll" (click)="rollCool($event)">Roll</button>
+    <button class="btn-med btn-roll" (click)="rollMoves($event)">Roll</button>
     &nbsp;
-    <select [(ngModel)]="coolTalent">
+    <select [(ngModel)]="movesTalent">
       <option value="">Choose one...</option>
-      <option *ngFor="let x of coolTalents">{{x}}</option>
+      <option *ngFor="let x of movesTalents">{{x}}</option>
     </select>
-    <button class="btn-wide btn-roll" (click)="rollCoolTalent($event)">Roll Talent</button>
+    <button class="btn-wide btn-roll" (click)="rollMovesTalent($event)">Roll Talent</button>
+    </div>
+
+
+    <div class="trait-label">
+      <span class="trait">
+        Cool:
+      </span>
+      
+      <button class="btn-small" (click)="decreaseCool($event)">-</button>
+      <span class="trait-holder">{{ cool }}</span>
+      <button class="btn-small" (click)="increaseCool($event)">+</button>
+
+      <button class="btn-med btn-roll" (click)="rollCool($event)">Roll</button>
+      &nbsp;
+      <select [(ngModel)]="coolTalent">
+        <option value="">Choose one...</option>
+        <option *ngFor="let x of coolTalents">{{x}}</option>
+      </select>
+      <button class="btn-wide btn-roll" (click)="rollCoolTalent($event)">Roll Talent</button>
+    </div>
+
+    <h3>Traits Total: {{ totalTraits }} / <input class="input-control" [(ngModel)]="traitsAllowed"></h3>
   </div>
 
-  <h3>Traits Total: {{ totalTraits }} / <input class="input-control" [(ngModel)]="traitsAllowed"></h3>
 
-  <div class="trait-label">
-    <span class="trait">
-    Brownie Points: {{ browniePoints }}
-    </span>
-    <button class="btn-small" (click)="increaseBrowniePoints($event)">+</button>
-    <button class="btn-small" (click)="decreaseBrowniePoints($event)">-</button>
+  <div class="col right">
+    <div class="trait-label">
+      
+        <span class="wide-trait">
+          Brownie Points: 
+          </span>
+          
+          <button class="btn-small" (click)="decreaseBrowniePoints($event)">-</button>
+          <span class="trait-holder">{{ browniePoints }}</span>
+          <button class="btn-small" (click)="increaseBrowniePoints($event)">+</button>
+          <br />
+          <br />
+          <span class="wide-trait">
+            Goal:
+            </span>
+            <select ng-model="goal">
+              <option *ngFor="let x of goals">{{x}}</option>
+            </select>
+        <br />
+        <span class="wide-trait"></span><button class="btn-extra-wide btn-roll" (click)="rollStraight()">Roll Straight d6</button>
+        <br />
+        <span class="wide-trait"></span><button class="btn-extra-wide btn-roll" (click)="roll(1, 'Single Ghost Die')">Roll Ghost Die</button>  
+      </div>
+    </div>
   </div>
-
-  <div class="trait-label">
-    <span class="trait">
-    Goal:
-    </span>
-    <select ng-model="goal">
-      <option *ngFor="let x of goals">{{x}}</option>
-    </select>
-  </div>
+    
 
 
   <div class="roll" [innerHTML]="lastRoll" [ngClass]="{'ghost':ghostStatus}">

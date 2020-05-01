@@ -1,74 +1,43 @@
 import { Component } from '@angular/core';
-import { Trait } from './interfaces/trait';
+import { RollRequest } from './interfaces/roll-request';
+import {CharacterService} from './character.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
+  character:CharacterService;
+
+  constructor(chr:CharacterService) { 
+    this.character = chr;
+  }
+
   title = 'Ghostbusters ID Card & Die Roller';
-
-  name: string = '';
-
-  brainsTalents = ['Accounting', 'Anthropology', 'Archaeology','Astronomy', 'Biology',
-  'Botany', 'Bureaucratics', 'Chemistry', 'Computer Use', 'Deduction', 'Demolitions', 
-  'Electronics', 'Geology', 'Guess', 'Hair Styling', 'History', 'Journalism', 
-  'Library Science', 'Linguistics', 'Mathematics', 'Electrical Repair', 'Mechanical Repair',
-  'Medicine', 'Occult', 'Parapsychology', 'Physics', 'Psychoanalysis', 'Soap Opera Romances',
-  'Sports Facts', 'Zoology', 'Other'];
-
-  muscleTalents = ['Brawl', 'Break Things', 'Climb', 'Gobble Food', 'Grapple', 'Intimidate',
-  'Jump', 'Kick Things Over', 'Lift', 'Rip Things Open', 'Run', 'Swim', 'Wrestle', 'Other'];
-
-  movesTalents = ['Attract Attention', 'Balance', 'Breakdance', 'Catch', 'Disguise', 'Dodge',
-  'Drive Vehicle', 'Fire Weapon', 'Gossip', 'Hide', 'Listen', 'Make Music', 'Pick Pocket',
-  'Seduce', 'See', 'Sleight of Hand', 'Sneak', 'Sniff', 'Strut', 'Throw', 'Other'];
-
-  coolTalents = ['Bargain', 'Bluff', 'Borrow', 'Browbeat', 'Charm', 'Convince', 'Fast Talk', 
-  'Orate', 'Play Poker', 'Play Stock Market', 'Raise Children', 'Tell Fibs', 'Other', ];
-
-  goals = ['Fame', 'Love/Sex', 'Serving Humanity', 'Wealth', 'Other'];
-
-  brains:Trait = {name: 'Brains', value: 1, talent: '', availableTalents: this.brainsTalents};
-  muscle:Trait = {name: 'Muscle', value: 1, talent: '', availableTalents: this.muscleTalents};
-  moves:Trait = {name: 'Moves', value: 1, talent: '', availableTalents: this.movesTalents};
-  cool:Trait = {name: 'Cool', value: 1, talent: '', availableTalents: this.coolTalents};
-
-  totalTraits:number;
-  traitsAllowed:number = 12;
-
-  goal: string = '';
-
-  browniePoints: number = 20;
 
   lastRoll: string = 'Rolls appear here';
 
   ghostStatus: boolean = false;
 
   ngOnInit() {
-    this.totalTraits = this.brains.value + this.muscle.value + this.moves.value + this.cool.value;
+    this.character.updateTotal();
   }
 
   onChanged() {
-    this.totalTraits = this.brains.value + this.muscle.value + this.moves.value + this.cool.value;
+    this.character.updateTotal();
   }
 
-  decreaseBrowniePoints(ev:Event) {
-    if (this.browniePoints > 1) {
-      this.browniePoints--;
-    }
+  onRoll ($event) {
+    this.roll($event.name, $event.value);
   }
 
-  increaseBrowniePoints(ev:Event) {
-    this.browniePoints++;
-  }
-
-  roll = function (trait:number, label: string){
-    let rollStr= label + " Roll:&nbsp;";
+  roll = function (name:string, value:number){
+    let rollStr= name + " Roll:&nbsp;";
     var total: number = 0;
 
-    for(var i:number = 0; i < trait - 1; i++) {
+    for(var i:number = 0; i < value - 1; i++) {
       var roll:number = this.d6();
       rollStr += `<img width="44" height="44" src="assets/img/green${roll}.svg" class="die" />&nbsp;`;
       total += roll;
@@ -95,7 +64,9 @@ export class AppComponent {
 
     rollStr += `<img width="44" height="44" src="assets/img/green${roll}.svg" class="die" />&nbsp;`;
     rollStr += " Total: " + roll;
+   
     this.lastRoll = rollStr;
+    this.ghostStatus = false;
   }
 
   d6 = function() {

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Trait } from '../interfaces/trait';
+import { RollRequest } from '../interfaces/roll-request';
+import { CharacterService } from '../character.service';
 
 
 @Component({
@@ -10,15 +12,20 @@ import { Trait } from '../interfaces/trait';
 export class TraitDetailComponent implements OnInit {
   @Input() trait:Trait;
   @Output() changed = new EventEmitter();
+  @Output() roll = new EventEmitter;
 
-  constructor() { }
+  character:CharacterService;
+
+  constructor(chr:CharacterService) {
+    this.character = chr;
+  }
 
   ngOnInit(): void {}
 
 
   increase() {
     // if (this.value < 5 && this.totalTraits < this.traitsAllowed) {
-    if (this.trait.value < 5) {
+    if (this.trait.value < 5 && this.character.totalTraits < this.character.traitsAllowed) {
       this.trait.value++;
       this.changed.emit(null);
     }
@@ -32,11 +39,12 @@ export class TraitDetailComponent implements OnInit {
   }
 
   rollTrait() {
-    //this.roll(this.trait.value, this.trait.name);
+    let req:RollRequest = { name: this.trait.name, value: this.trait.value };
+    this.roll.emit(req);
   }
 
   rollTalent() {
-    // this.roll(this.trait.value + 3,
-    //   `${this.trait.talent} (${this.trait.name})`);
+    let req:RollRequest = { name: `${this.trait.talent} (${this.trait.name})`, value: this.trait.value + 3 };
+    this.roll.emit(req);
   }
 }

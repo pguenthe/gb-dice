@@ -72,12 +72,18 @@
   }
 
   .col {
-    /* padding: 8px;
-    margin: 8px; */
+    padding: 12px 0px;
     display: flex;
     flex-direction: column;
-    flex-basis: 100%;
-    flex: 1;
+    flex-basis: auto; 
+  }
+
+  .left {
+    width: 40%;
+  }
+
+  .right {
+    width: 58%;
   }
 
   .btn-roll {
@@ -134,6 +140,10 @@ select {
     border-radius: 2px;
 }
 
+.center {
+  text-align: center;
+}
+
 .input-control {
   font-size: 14px;
   height: 32px;
@@ -153,17 +163,22 @@ select {
   display: flex;
   flex-direction: row;
   align-items: center;
+  text-align: center;
   border: 1px solid white;
   border-radius: 4px;
   width: 100%;
   height: 48px;
-  padding: 4px 8px;
+  padding: 6px 8px;
   margin: 8px;
   font-size: 18pt;
 }
 
+.rolltext {
+  margin: 0px auto;
+}
+
 .ghost {
-  border-color: red;
+  border-color: black;
   color: red;
   background-color: yellow;
   font-weight: bolder;
@@ -178,7 +193,11 @@ select {
 }
 
 .trait-holder{
-  width: 32px;
+  text-align: center;
+  display: inline-block;
+  margin-left: 4px;
+  margin-right: 4px;
+  width: 24px;
   height: 32px;
   font-size: 16pt;
   flex-shrink: 2;
@@ -197,12 +216,9 @@ select {
   margin: 0px 4px;
   height: 32px;
   font-size: 16pt;
-  width: 10em;
+  width: 8em;
   text-align: right;
   display: inline-block;
 }
 
-img.die {
-  padding: 6px;
-}
 

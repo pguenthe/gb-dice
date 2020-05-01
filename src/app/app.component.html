@@ -10,12 +10,40 @@
 <div class="content" role="main">
 
 <div class="row">
+
   <div class="col left">
     <div class="trait-label">
-      <span class="trait">Name:</span>
+      <span class="wide-trait">Name:</span>
       <input [(ngModel)]="name" type="text" class="input-control wide" />
     </div>
 
+    <div class="trait-label">
+        <span class="wide-trait">
+          Brownie Points: 
+          </span>
+          
+          <button class="btn-small" (click)="decreaseBrowniePoints($event)">-</button>
+          <span class="trait-holder">{{ browniePoints }}</span>
+          <button class="btn-small" (click)="increaseBrowniePoints($event)">+</button>
+    </div>
+    
+    <div class="trait-label">
+      <span class="wide-trait">
+            Goal:
+            </span>
+            <select ng-model="goal">
+              <option *ngFor="let x of goals">{{x}}</option>
+            </select>
+    </div>
+
+    <div class="trait-label">
+        <span class="wide-trait"></span>
+        <button class="btn-extra-wide btn-roll" (click)="rollStraight()">Roll Straight d6</button>
+        <button class="btn-extra-wide btn-roll" (click)="roll(1, 'Single Ghost Die')">Roll Ghost Die</button>  
+      </div>
+    </div>
+
+  <div class="col right">
     <div class="trait-label">
       <span class="trait">
       Brains:
@@ -89,39 +117,15 @@
       <button class="btn-wide btn-roll" (click)="rollCoolTalent($event)">Roll Talent</button>
     </div>
 
-    <h3>Traits Total: {{ totalTraits }} / <input class="input-control" [(ngModel)]="traitsAllowed"></h3>
+    <h3 class="center">Traits Total: {{ totalTraits }} / <input class="input-control center" [(ngModel)]="traitsAllowed"></h3>
   </div>
 
-
-  <div class="col right">
-    <div class="trait-label">
-      
-        <span class="wide-trait">
-          Brownie Points: 
-          </span>
-          
-          <button class="btn-small" (click)="decreaseBrowniePoints($event)">-</button>
-          <span class="trait-holder">{{ browniePoints }}</span>
-          <button class="btn-small" (click)="increaseBrowniePoints($event)">+</button>
-          <br />
-          <br />
-          <span class="wide-trait">
-            Goal:
-            </span>
-            <select ng-model="goal">
-              <option *ngFor="let x of goals">{{x}}</option>
-            </select>
-        <br />
-        <span class="wide-trait"></span><button class="btn-extra-wide btn-roll" (click)="rollStraight()">Roll Straight d6</button>
-        <br />
-        <span class="wide-trait"></span><button class="btn-extra-wide btn-roll" (click)="roll(1, 'Single Ghost Die')">Roll Ghost Die</button>  
-      </div>
-    </div>
   </div>
     
 
 
-  <div class="roll" [innerHTML]="lastRoll" [ngClass]="{'ghost':ghostStatus}">
+  <div class="roll" [ngClass]="{'ghost':ghostStatus}">
+    <span [innerHTML]="lastRoll" class="rolltext" ></span>
   </div>
 
  </div>

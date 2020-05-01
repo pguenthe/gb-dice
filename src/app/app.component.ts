@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Trait } from './interfaces/trait';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +11,32 @@ export class AppComponent {
 
   name: string = '';
 
-  brains: number = 1;
-  muscle: number = 1;
-  moves: number = 1;
-  cool: number = 1;
-  totalTraits = this.brains + this.muscle + this.moves + this.cool;
-  traitsAllowed:number = 12;
+  brainsTalents = ['Accounting', 'Anthropology', 'Archaeology','Astronomy', 'Biology',
+  'Botany', 'Bureaucratics', 'Chemistry', 'Computer Use', 'Deduction', 'Demolitions', 
+  'Electronics', 'Geology', 'Guess', 'Hair Styling', 'History', 'Journalism', 
+  'Library Science', 'Linguistics', 'Mathematics', 'Electrical Repair', 'Mechanical Repair',
+  'Medicine', 'Occult', 'Parapsychology', 'Physics', 'Psychoanalysis', 'Soap Opera Romances',
+  'Sports Facts', 'Zoology', 'Other'];
 
-  brainsTalent: string = '';
-  muscleTalent: string = '';
-  movesTalent: string = '';
-  coolTalent: string = '';
+  muscleTalents = ['Brawl', 'Break Things', 'Climb', 'Gobble Food', 'Grapple', 'Intimidate',
+  'Jump', 'Kick Things Over', 'Lift', 'Rip Things Open', 'Run', 'Swim', 'Wrestle', 'Other'];
+
+  movesTalents = ['Attract Attention', 'Balance', 'Breakdance', 'Catch', 'Disguise', 'Dodge',
+  'Drive Vehicle', 'Fire Weapon', 'Gossip', 'Hide', 'Listen', 'Make Music', 'Pick Pocket',
+  'Seduce', 'See', 'Sleight of Hand', 'Sneak', 'Sniff', 'Strut', 'Throw', 'Other'];
+
+  coolTalents = ['Bargain', 'Bluff', 'Borrow', 'Browbeat', 'Charm', 'Convince', 'Fast Talk', 
+  'Orate', 'Play Poker', 'Play Stock Market', 'Raise Children', 'Tell Fibs', 'Other', ];
+
+  goals = ['Fame', 'Love/Sex', 'Serving Humanity', 'Wealth', 'Other'];
+
+  brains:Trait = {name: 'Brains', value: 1, talent: '', availableTalents: this.brainsTalents};
+  muscle:Trait = {name: 'Muscle', value: 1, talent: '', availableTalents: this.muscleTalents};
+  moves:Trait = {name: 'Moves', value: 1, talent: '', availableTalents: this.movesTalents};
+  cool:Trait = {name: 'Cool', value: 1, talent: '', availableTalents: this.coolTalents};
+
+  totalTraits:number;
+  traitsAllowed:number = 12;
 
   goal: string = '';
 
@@ -30,53 +46,12 @@ export class AppComponent {
 
   ghostStatus: boolean = false;
 
-  increaseBrains(ev:Event) {
-    if (this.brains < 5 && this.totalTraits < this.traitsAllowed) {
-      this.brains++;
-      this.totalTraits++;
-    }
+  ngOnInit() {
+    this.totalTraits = this.brains.value + this.muscle.value + this.moves.value + this.cool.value;
   }
 
-  decreaseBrains(ev:Event) {
-    if (this.brains > 1) {
-      this.brains--;
-      this.totalTraits--;
-    }
-  }
-
-  increaseMuscle(ev:Event) {
-    if (this.muscle < 5 && this.totalTraits < this.traitsAllowed) {
-      this.muscle++;
-      this.totalTraits++;
-    }
-  }
-
-  decreaseMuscle(ev:Event) {
-    if (this.muscle > 1) {
-      this.muscle--;
-      this.totalTraits--;
-    }
-  }
-
-  increaseMoves(ev:Event) {
-    if (this.moves < 5 && this.totalTraits < this.traitsAllowed) {
-      this.moves++;
-      this.totalTraits++;
-    }
-  }
-
-  decreaseMoves(ev:Event) {
-    if (this.moves > 1) {
-      this.moves--;
-      this.totalTraits--;
-    }
-  }
-
-  increaseCool(ev:Event) {
-    if (this.cool < 5 && this.totalTraits < this.traitsAllowed) {
-      this.cool++;
-      this.totalTraits++;
-    }
+  onChanged() {
+    this.totalTraits = this.brains.value + this.muscle.value + this.moves.value + this.cool.value;
   }
 
   decreaseBrowniePoints(ev:Event) {
@@ -87,45 +62,6 @@ export class AppComponent {
 
   increaseBrowniePoints(ev:Event) {
     this.browniePoints++;
-  }
-
-  decreaseCool(ev:Event) {
-    if (this.cool > 1) {
-      this.cool--;
-      this.totalTraits--;
-    }
-  }
-
-  rollBrains(ev:Event) {
-    this.roll(this.brains, "Brains");
-  }
-
-  rollMuscle(ev:Event) {
-    this.roll(this.muscle, "Muscle");
-  }
-
-  rollMoves(ev:Event) {
-    this.roll(this.moves, "Moves");
-  }
-
-  rollCool(ev:Event) {
-    this.roll(this.cool, "Cool");
-  }
-  
-  rollBrainsTalent(ev:Event) {
-    this.roll(this.brains + 3, this.brainsTalent + " (Brains)");
-  }
-  
-  rollMuscleTalent(ev:Event) {
-    this.roll(this.muscle + 3, this.muscleTalent + " (Muscle)");
-  }
-
-  rollMovesTalent(ev:Event) {
-    this.roll(this.moves + 3, this.movesTalent + " (Moves}");
-  }
-
-  rollCoolTalent(ev:Event) {
-    this.roll(this.cool + 3, this.coolTalent + " (Cool)");
   }
 
   roll = function (trait:number, label: string){
@@ -166,23 +102,4 @@ export class AppComponent {
     return Math.floor(Math.random() * 6 + 1);
   }
 
-
-  brainsTalents = ['Accounting', 'Anthropology', 'Archaeology','Astronomy', 'Biology',
-  'Botany', 'Bureaucratics', 'Chemistry', 'Computer Use', 'Deduction', 'Demolitions', 
-  'Electronics', 'Geology', 'Guess', 'Hair Styling', 'History', 'Journalism', 
-  'Library Science', 'Linguistics', 'Mathematics', 'Electrical Repair', 'Mechanical Repair',
-  'Medicine', 'Occult', 'Parapsychology', 'Physics', 'Psychoanalysis', 'Soap Opera Romances',
-  'Sports Facts', 'Zoology', 'Other'];
-
-  muscleTalents = ['Brawl', 'Break Things', 'Climb', 'Gobble Food', 'Grapple', 'Intimidate',
-  'Jump', 'Kick Things Over', 'Lift', 'Rip Things Open', 'Run', 'Swim', 'Wrestle', 'Other'];
-
-  movesTalents = ['Attract Attention', 'Balance', 'Breakdance', 'Catch', 'Disguise', 'Dodge',
-  'Drive Vehicle', 'Fire Weapon', 'Gossip', 'Hide', 'Listen', 'Make Music', 'Pick Pocket',
-  'Seduce', 'See', 'Sleight of Hand', 'Sneak', 'Sniff', 'Strut', 'Throw', 'Other'];
-
-  coolTalents = ['Bargain', 'Bluff', 'Borrow', 'Browbeat', 'Charm', 'Convince', 'Fast Talk', 
-  'Orate', 'Play Poker', 'Play Stock Market', 'Raise Children', 'Tell Fibs', 'Other', ];
-
-  goals = ['Fame', 'Love/Sex', 'Serving Humanity', 'Wealth', 'Other'];
 }

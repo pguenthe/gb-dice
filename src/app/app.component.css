@@ -86,39 +86,7 @@
     width: 58%;
   }
 
-  .btn-roll {
-    background-color: #bbb;
-  }
-
-  .btn-small {
-      font-size: 14px;
-      height: 32px;
-      width: 32px;
-      padding: 1px;
-      margin: 2px;
-      border: 1px solid black;
-      border-radius: 2px;
-  }
-
-  .btn-med {
-    font-size: 14px;
-    height: 32px;
-    width: 48px;
-    padding: 2px;
-    margin: 2px;
-    border: 1px solid black;
-    border-radius: 2px;
-}
-
-.btn-wide {
-    font-size: 14px;
-    height: 32px;
-    width: 96px;
-    padding: 2px;
-    margin: 2px;
-    border: 1px solid black;
-    border-radius: 2px;
-}
+ 
 
 .btn-extra-wide {
   font-size: 14px;
@@ -130,15 +98,7 @@
   border-radius: 2px;
 }
 
-select {
-    font-size: 14px;
-    height: 32px;
-    width: 192px;
-    padding: 2px;
-    margin: 2px;
-    border: 1px solid black;
-    border-radius: 2px;
-}
+
 
 .center {
   text-align: center;
@@ -158,6 +118,14 @@ select {
   width: 240px;
 }
 
+.wide-trait {
+  margin: 0px 4px;
+  height: 32px;
+  font-size: 16pt;
+  width: 8em;
+  text-align: right;
+  display: inline-block;
+}
 
 .roll {
   display: flex;
@@ -183,6 +151,8 @@ select {
   background-color: yellow;
   font-weight: bolder;
 }
+
+/*cut these styles when the component is complete*/
 
 .trait-label {
     width: 42em;
@@ -212,13 +182,47 @@ select {
     display: inline-block;
 }
 
-.wide-trait {
-  margin: 0px 4px;
+select {
+  font-size: 14px;
   height: 32px;
-  font-size: 16pt;
-  width: 8em;
-  text-align: right;
-  display: inline-block;
+  width: 192px;
+  padding: 2px;
+  margin: 2px;
+  border: 1px solid black;
+  border-radius: 2px;
 }
 
 
+.btn-roll {
+  background-color: #bbb;
+}
+
+.btn-small {
+    font-size: 14px;
+    height: 32px;
+    width: 32px;
+    padding: 1px;
+    margin: 2px;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.btn-med {
+  font-size: 14px;
+  height: 32px;
+  width: 48px;
+  padding: 2px;
+  margin: 2px;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+.btn-wide {
+  font-size: 14px;
+  height: 32px;
+  width: 96px;
+  padding: 2px;
+  margin: 2px;
+  border: 1px solid black;
+  border-radius: 2px;
+}

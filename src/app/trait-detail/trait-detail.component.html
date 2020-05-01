@@ -1,0 +1,18 @@
+<div class="trait-label">
+    <span class="trait">
+    {{trait.name}}:
+    </span>
+    
+    <button class="btn-small" (click)="decrease()">-</button>
+    <span class="trait-holder">{{ trait.value }}</span>
+    <button class="btn-small" (click)="increase()">+</button>
+
+    <button class="btn-med btn-roll" (click)="rollTrait()">Roll</button>
+    &nbsp;
+    <select [(ngModel)]="trait.talent">
+    <option value="">Choose one...</option>
+    <option *ngFor="let x of trait.availableTalents">{{x}}</option>
+    </select>
+
+    <button class="btn-wide btn-roll" (click)="rollTalent()">Roll Talent</button>
+</div>

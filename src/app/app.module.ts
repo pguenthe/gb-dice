@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TraitDetailComponent } from './trait-detail/trait-detail.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TraitDetailComponent
   ],
   imports: [
     BrowserModule,

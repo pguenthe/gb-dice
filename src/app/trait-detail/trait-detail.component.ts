@@ -3,7 +3,6 @@ import { Trait } from '../interfaces/trait';
 import { RollRequest } from '../interfaces/roll-request';
 import { CharacterService } from '../character.service';
 
-
 @Component({
   selector: 'app-trait-detail',
   templateUrl: './trait-detail.component.html',
@@ -24,7 +23,6 @@ export class TraitDetailComponent implements OnInit {
 
 
   increase() {
-    // if (this.value < 5 && this.totalTraits < this.traitsAllowed) {
     if (this.trait.value < 5 && this.character.totalTraits < this.character.traitsAllowed) {
       this.trait.value++;
       this.changed.emit(null);

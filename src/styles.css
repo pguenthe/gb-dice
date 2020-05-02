@@ -1,4 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+/* font converted using font-converter.net. thank you! */
+/* Ghostbusters Font (free for personal use) retrieved from https://www.dafont.com/ghostbusters.font */
+@font-face {
+  font-family: "Ghostbusters";
+
+  src: url("./fonts/GHOSTBUS.woff") format("woff"), /* Modern Browsers */
+    url("./fonts/GHOSTBUS.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
 
 html, body { height: 100%; }
 body { 
@@ -15,16 +24,15 @@ body {
 }
 
 footer {
-  font-size: 12pt;
-    width: 100%;
-    height: 30px;
-    background-color: black;
+  font-size: 10pt;
+  width: 100%;
+  height: 60px;
+  background-color: black;
   margin-top: 8px;
-  display: flex;
-  align-items: center;
   line-height: 20px;
   flex-shrink: 0;
   padding: 4px 10px;
+  text-align: center;
 }
 
 a,
@@ -35,4 +43,110 @@ a:visited{
 
 a:hover {
   color: #9f9;
+}
+
+
+
+.trait {
+  margin: 0px 4px;
+  height: 32px;
+  font-size: 16pt;
+  width: 3em;
+  text-align: right;
+  display: inline-block;
+}
+
+.trait-holder{
+  text-align: center;
+  display: inline-block;
+  margin-left: 4px;
+  margin-right: 4px;
+  width: 24px;
+  height: 32px;
+  font-size: 16pt;
+  flex-shrink: 2;
+}
+
+.btn-roll {
+  background-color: #bbb;
+}
+
+.btn-small {
+    font-size: 14px;
+    height: 32px;
+    width: 32px;
+    padding: 1px;
+    margin: 2px;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.btn-med {
+  font-size: 14px;
+  height: 32px;
+  width: 48px;
+  padding: 2px;
+  margin: 2px;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+.btn-wide {
+  font-size: 14px;
+  height: 32px;
+  width: 96px;
+  padding: 2px;
+  margin: 2px;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+select {
+  font-size: 14px;
+  height: 32px;
+  width: 192px;
+  padding: 2px;
+  margin: 2px;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+.trait-itself {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.trait-talent {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+@media only screen and (min-width: 800px) {
+
+  .trait {
+    margin: 0px 4px;
+    height: 32px;
+    font-size: 16pt;
+    width: 5em;
+    text-align: right;
+    display: inline-block;
+  }
+
+  footer {
+    font-size: 12pt;
+    width: 100%;
+    height: 30px;
+  }
+
+  .trait-itself {
+    display: inline;
+    text-align: right;
+  }
+
+  .trait-talent {
+    display: inline;
+    text-align: left;
+  }
 }

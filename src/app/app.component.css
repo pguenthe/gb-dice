@@ -37,12 +37,16 @@
 
   .title {
     text-align: center;
-    width: 24em;
+    width: 16em;
     margin-left: 10px;
     margin-right: 10px;
     color: white;
     font-weight: 600;
-    font-size: 18pt;
+    font-size: 12pt;
+  }
+
+  .gb {
+    font-family: 'Ghostbusters';
   }
 
   .warning-stripe {
@@ -68,7 +72,7 @@
     flex-direction: row;
     align-items: flex-start;
     flex-wrap: wrap;
-    width: 100%;
+    margin: auto;
   }
 
   .col {
@@ -79,14 +83,12 @@
   }
 
   .left {
-    width: 40%;
+    width: 100%;
   }
 
   .right {
-    width: 58%;
+    width: 100%;
   }
-
- 
 
 .btn-extra-wide {
   font-size: 14px;
@@ -122,7 +124,7 @@
   margin: 0px 4px;
   height: 32px;
   font-size: 16pt;
-  width: 8em;
+  width: 3em;
   text-align: right;
   display: inline-block;
 }
@@ -135,7 +137,7 @@
   border: 1px solid white;
   border-radius: 4px;
   width: 100%;
-  height: 48px;
+  height: 96px;
   padding: 6px 8px;
   margin: 8px;
   font-size: 18pt;
@@ -152,36 +154,6 @@
   font-weight: bolder;
 }
 
-/*cut these styles when the component is complete*/
-
-.trait-label {
-    width: 42em;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-items: center;
-    margin: 2px;
-}
-
-.trait-holder{
-  text-align: center;
-  display: inline-block;
-  margin-left: 4px;
-  margin-right: 4px;
-  width: 24px;
-  height: 32px;
-  font-size: 16pt;
-  flex-shrink: 2;
-}
-
-.trait {
-    margin: 0px 4px;
-    height: 32px;
-    font-size: 16pt;
-    width: 5em;
-    text-align: right;
-    display: inline-block;
-}
-
 select {
   font-size: 14px;
   height: 32px;
@@ -193,36 +165,36 @@ select {
 }
 
 
-.btn-roll {
-  background-color: #bbb;
-}
+@media only screen and (min-width: 800px) {
+  .roll {
+    height: 48px;
+  }
 
-.btn-small {
-    font-size: 14px;
+  .wide-trait {
+    margin: 0px 4px;
     height: 32px;
-    width: 32px;
-    padding: 1px;
-    margin: 2px;
-    border: 1px solid black;
-    border-radius: 2px;
-}
+    font-size: 16pt;
+    width: 8em;
+    text-align: right;
+    display: inline-block;
+  }
 
-.btn-med {
-  font-size: 14px;
-  height: 32px;
-  width: 48px;
-  padding: 2px;
-  margin: 2px;
-  border: 1px solid black;
-  border-radius: 2px;
-}
+  .title {
+    font-size: 18pt;
+  }
 
-.btn-wide {
-  font-size: 14px;
-  height: 32px;
-  width: 96px;
-  padding: 2px;
-  margin: 2px;
-  border: 1px solid black;
-  border-radius: 2px;
+  .col {
+    padding: 12px 0px;
+    display: flex;
+    flex-direction: column;
+    flex-basis: auto; 
+  }
+
+  .left {
+    width: 32em;
+  }
+
+  .right {
+    width: 42em;
+  }
 }
